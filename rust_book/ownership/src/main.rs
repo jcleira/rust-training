@@ -30,6 +30,13 @@ fn main() {
     let mut s5 = String::from("hello");
     send_reference(&s5);
     send_and_update_reference(&mut s5);
+
+    let slice_word = String::from("good morning");
+    let slice_word_slice = &slice_word[..5];
+    println!("{}", slice_word_slice);
+
+    let result = first_word(&slice_word);
+    println!("{}", result);
 }
 
 fn makes_copy(some_integer: i32) {
@@ -51,4 +58,16 @@ fn send_reference(some_string: &String) {
 fn send_and_update_reference(some_string: &mut String) {
     some_string.push_str("!");
     println!("{}", some_string);
+}
+
+fn first_word(some_string: &String) -> &str {
+    let bytes = some_string.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &some_string[..i];
+        }
+    }
+
+    &some_string[..]
 }
