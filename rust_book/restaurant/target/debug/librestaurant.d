@@ -1,0 +1,1 @@
+/Users/arvos/Code/rust/src/github.com/jcleira/rust-training/rust_book/restaurant/target/debug/librestaurant.rlib: /Users/arvos/Code/rust/src/github.com/jcleira/rust-training/rust_book/restaurant/src/lib.rs
