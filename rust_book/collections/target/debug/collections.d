@@ -1,0 +1,1 @@
+/Users/arvos/Code/rust/src/github.com/jcleira/rust-training/rust_book/collections/target/debug/collections: /Users/arvos/Code/rust/src/github.com/jcleira/rust-training/rust_book/collections/src/main.rs
