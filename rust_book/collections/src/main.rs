@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     let v: Vec<i32> = Vec::new();
 
@@ -49,4 +51,15 @@ fn main() {
     for sct_val in sct {
         println!("{:?}", sct_val)
     }
+
+    // Final exercices
+    //
+    let i_key = vec![1, 5, 6, 7, 8, 20, 1, 7, 7, 33];
+    let mut i_hash = HashMap::new();
+
+    for i in i_key {
+        i_hash.insert(i, 0);
+    }
+
+    println!("{:?}", i_hash);
 }
