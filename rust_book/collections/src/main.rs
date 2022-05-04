@@ -54,12 +54,31 @@ fn main() {
 
     // Final exercices
     //
-    let i_key = vec![1, 5, 6, 7, 8, 20, 1, 7, 7, 33];
+    // Find the middle value:
+    let mut i_key = vec![1, 5, 6, 7, 8, 20, 1, 7, 7, 33];
+    i_key.sort();
+    let middle_value = i_key.get(i_key.len() / 2 + 1);
+    println!("middle value of {:?} is: {:?}", i_key, middle_value);
+
+    // Find the value with most occurrences
     let mut i_hash = HashMap::new();
-
     for i in i_key {
-        i_hash.insert(i, 0);
+        let count = i_hash.entry(i).or_insert(0);
+        *count += 1;
     }
-
     println!("{:?}", i_hash);
+
+    let mut max_value = 0;
+    let mut max_value_key = 0;
+
+    for (key, value) in i_hash {
+        if value > max_value {
+            max_value = value;
+            max_value_key = key;
+        }
+    }
+    println!(
+        "The value with most ocurrences is {:?} with {:?}",
+        max_value_key, max_value
+    );
 }
