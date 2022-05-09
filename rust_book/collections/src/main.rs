@@ -81,4 +81,31 @@ fn main() {
         "The value with most ocurrences is {:?} with {:?}",
         max_value_key, max_value
     );
+
+    // Modify strings
+    //
+    let str1 = String::from("apple");
+    let mut str2 = String::new();
+    let mut suffix = String::new();
+    let mut first: bool = true;
+
+    for c in str1.chars() {
+        match first {
+            true => {
+                first = false;
+                suffix = match c {
+                    'a' | 'e' | 'i' | 'o' | 'u' => {
+                        str2.push(c);
+                        String::from("-hay")
+                    }
+                    _ => format!("-{}ay", c),
+                };
+            }
+            false => {
+                str2.push(c);
+            }
+        }
+    }
+
+    println!("{}{}", str2, suffix)
 }
