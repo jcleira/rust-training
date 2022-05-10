@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::io::stdin;
 
 fn main() {
     let v: Vec<i32> = Vec::new();
@@ -107,5 +108,37 @@ fn main() {
         }
     }
 
-    println!("{}{}", str2, suffix)
+    println!("{}{}", str2, suffix);
+
+    // HashMap
+    let mut company = HashMap::new();
+
+    loop {
+        let mut buffer = String::new();
+        match stdin().read_line(&mut buffer) {
+            Ok(_) => {}
+            Err(error) => println!("Error reading from stdin: {}", error),
+        }
+
+        let res = match buffer.trim_end() {
+            "" => break,
+            input => input.split(" "),
+        };
+
+        if res.count() < 3 {
+            break;
+        }
+
+        let person = res.nth(0);
+        let department = res.nth(3);
+
+        if company.contains_key(&department) {
+            let mut department_persons= match company.entry(department) {
+                Entry::Occupied(value) => value.into_mut(),
+                Entry::Vacant(_) => Vec<String>,
+            };
+        }
+
+        let department = company.entry(department).or_insert(person);
+    }
 }
