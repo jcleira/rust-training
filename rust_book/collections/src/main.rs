@@ -120,7 +120,7 @@ fn main() {
             Err(error) => println!("Error reading from stdin: {}", error),
         }
 
-        let res = match buffer.trim_end() {
+        let mut res = match buffer.trim_end() {
             "" => break,
             input => input.split(" "),
         };
@@ -131,14 +131,11 @@ fn main() {
 
         let person = res.nth(0);
         let department = res.nth(3);
+        let department_persons = vec![person];
 
-        if company.contains_key(&department) {
-            let mut department_persons= match company.entry(department) {
-                Entry::Occupied(value) => value.into_mut(),
-                Entry::Vacant(_) => Vec<String>,
-            };
-        }
+        let found_department_persons = company.entry(department).or_insert(department_persons);
 
-        let department = company.entry(department).or_insert(person);
+        println!("{:?}", company);
+        println!("{:?}", found_department_persons);
     }
 }
